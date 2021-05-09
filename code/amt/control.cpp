@@ -2,7 +2,7 @@
 
 
 amt::control::control(const std::string& name)
-    : name{name}
+    : name{name}, control_bounds{0, 0, 0, 0}
 {
 
 }

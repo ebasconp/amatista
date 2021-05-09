@@ -2,9 +2,11 @@
 
 #include "window.h"
 
+#include "CControl.h"
+
 namespace amt
 {
-    template <typename Control>
+    template <CControl Control>
     class main_window : public window<Control>
     {
     public:
