@@ -10,6 +10,9 @@ namespace amt
     class main_window : public window<Control>
     {
     public:
-        using window<Control>::window;
+        main_window(const std::string& name = "") : window<Control>{name}
+        {
+            this->set_visible(false);
+        }
     };
 }
