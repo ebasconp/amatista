@@ -7,6 +7,8 @@
 
 #include "geom/bounds.h"
 
+#include "built_in_control_type.h"
+
 namespace amt
 {
     using namespace amt::events;
@@ -24,7 +26,7 @@ namespace amt
     public:
         virtual ~control() = default;
 
-        control(const std::string& name = "");
+        control(const std::string& name = "", built_in_control_type type = built_in_control_type::main_window);
 
         const std::string& get_name() const noexcept;
         void set_name(const std::string& name) noexcept;
@@ -32,6 +34,9 @@ namespace amt
         void set_visible(bool visible) noexcept;
         bool is_visible() const noexcept;
         void add_visible_changed_handler(property_changed_event_handler<bool> ) noexcept;
+
+        const geom::bounds& get_bounds() const noexcept;
+        void set_bounds(const geom::bounds& ctrl_bounds);
 
     protected:
         virtual void process_visible_changed();

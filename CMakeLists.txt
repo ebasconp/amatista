@@ -11,7 +11,7 @@ add_library(amatista SHARED
         code/amt/events/event_handler_list.h
         code/amt/events/property_changed_event.h
         code/amt/events/event.h
-        code/amt/events/event.cpp code/amt/events/property_changed_event_handler.h)
+        code/amt/events/event.cpp code/amt/events/property_changed_event_handler.h code/amt/ui_manager.h code/amt/ui_manager.cpp code/amt/ui_theme.h code/amt/default_ui_theme.h code/amt/ui_defaults.h code/amt/ui_defaults.cpp code/amt/default_ui_theme.cpp code/amt/built_in_control_type.h code/amt/mapped_ui_theme.h code/amt/mapped_ui_theme.cpp)
 
 include_directories(code)
 

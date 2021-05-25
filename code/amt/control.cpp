@@ -1,8 +1,10 @@
 #include "control.h"
+#include "built_in_control_type.h"
+#include "ui_defaults.h"
+#include "ui_manager.h"
 
-
-amt::control::control(const std::string& name)
-    : name{name}, control_bounds{0, 0, 0, 0}
+amt::control::control(const std::string& name, amt::built_in_control_type type)
+    : name{name}, control_bounds{ amt::ui_manager::get_defaults(type).get_bounds()}
 {
 
 }
@@ -28,6 +30,18 @@ amt::control::set_visible(bool visible) noexcept
     this->visible = visible;
     process_visible_changed();
 }
+
+const amt::geom::bounds& amt::control::get_bounds() const noexcept
+{
+    return control_bounds;
+}
+
+
+void amt::control::set_bounds(const amt::geom::bounds& ctrl_bounds)
+{
+    this->control_bounds = ctrl_bounds;
+}
+
 
 bool
 amt::control::is_visible() const noexcept

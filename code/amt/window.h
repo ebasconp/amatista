@@ -10,6 +10,10 @@ namespace amt
         Control main_control;
 
     public:
-        using control::control;
+        window(const std::string& name, built_in_control_type type)
+            : control{name, type}
+        {
+
+        }
     };
 }
