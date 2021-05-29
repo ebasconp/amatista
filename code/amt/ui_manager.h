@@ -2,6 +2,8 @@
 
 #include "built_in_control_type.h"
 
+#include "backend/backend_ui_manager.h"
+
 #include <memory>
 
 namespace amt
@@ -12,6 +14,8 @@ namespace amt
     class ui_manager
     {
         mutable std::shared_ptr<ui_theme> theme;
+
+        backend::backend_ui_manager be_ui_manager;
 
     public:
         static ui_manager& get_instance();
