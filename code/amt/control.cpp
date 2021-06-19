@@ -4,7 +4,9 @@
 #include "ui_manager.h"
 
 amt::control::control(const std::string& name, amt::built_in_control_type type)
-    : name{name}, control_bounds{ amt::ui_manager::get_defaults(type).get_bounds()}
+    : name{name},
+      control_bounds{ amt::ui_manager::get_defaults(type).get_bounds()},
+      background_color{ amt::ui_manager::get_defaults(type).get_background_color() }
 {
 
 }
@@ -62,3 +64,39 @@ amt::control::process_visible_changed()
     auto e = property_changed_event<bool>{ *this, !visible, visible };
     visible_changed_handlers.notify(e);
 }
+
+size_t amt::control::get_left() const noexcept
+{
+    return control_bounds.get_position().get_left();
+}
+
+
+size_t amt::control::get_top() const noexcept
+{
+    return control_bounds.get_position().get_top();
+}
+
+
+size_t amt::control::get_width() const noexcept
+{
+    return control_bounds.get_dimension().get_width();
+}
+
+
+size_t amt::control::get_height() const noexcept
+{
+    return control_bounds.get_dimension().get_height();
+}
+
+
+const amt::geom::color& amt::control::get_background_color() const noexcept
+{
+    return background_color;
+}
+
+
+void amt::control::set_background_color(const geom::color& background_color)
+{
+    this->background_color = background_color;
+}
+

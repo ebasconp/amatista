@@ -14,16 +14,19 @@ void
 amt::backend::sdl2::sdl2_main_window::show()
 {
     window = SDL_CreateWindow(
-            "SDL2Test",
-            SDL_WINDOWPOS_UNDEFINED,
-            SDL_WINDOWPOS_UNDEFINED,
-            640,
-            480,
+            main_window.get_name().data(),
+            main_window.get_left(),
+            main_window.get_top(),
+            main_window.get_width(),
+            main_window.get_height(),
             0
     );
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+
+    auto& bc = main_window.get_background_color();
+
+    SDL_SetRenderDrawColor(renderer, bc.get_red(), bc.get_green(), bc.get_blue(), SDL_ALPHA_OPAQUE);
     SDL_RenderClear(renderer);
     SDL_RenderPresent(renderer);
 

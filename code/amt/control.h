@@ -6,6 +6,7 @@
 #include "events/property_changed_event_handler.h"
 
 #include "geom/bounds.h"
+#include "geom/color.h"
 
 #include "built_in_control_type.h"
 
@@ -18,6 +19,7 @@ namespace amt
         std::string name;
 
         geom::bounds control_bounds;
+        geom::color background_color;
 
         bool visible;
         event_handler_list<property_changed_event_handler<bool>> visible_changed_handlers;
@@ -37,6 +39,14 @@ namespace amt
 
         const geom::bounds& get_bounds() const noexcept;
         void set_bounds(const geom::bounds& ctrl_bounds);
+
+        const geom::color& get_background_color() const noexcept;
+        void set_background_color(const geom::color& background_color);
+
+        size_t get_left() const noexcept;
+        size_t get_top() const noexcept;
+        size_t get_width() const noexcept;
+        size_t get_height() const noexcept;
 
     protected:
         virtual void process_visible_changed();
